@@ -1,0 +1,19 @@
+SunsetCore/SunsetEngine.cpp:35:1: warning: non-void function does not return a value [-Wreturn-type]
+}
+^
+SunsetCore/SunsetEngine.cpp:39:1: warning: non-void function does not return a value [-Wreturn-type]
+}
+^
+2 warnings generated.
+main.cpp:5:37: warning: empty parentheses interpreted as a function declaration [-Wvexing-parse]
+        SunsetEngine::SunsetEngineCore core();
+                                           ^~
+main.cpp:5:37: note: replace parentheses with an initializer to declare a variable
+        SunsetEngine::SunsetEngineCore core();
+                                           ^~
+                                           {}
+main.cpp:6:2: error: base of member reference is a function; perhaps you meant to call it with no arguments?
+        core.mainLoop();
+        ^~~~
+            ()
+1 warning and 1 error generated.
