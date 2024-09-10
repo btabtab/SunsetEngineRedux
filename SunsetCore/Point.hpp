@@ -5,6 +5,7 @@ namespace SunsetEngine
 	class Point
 	{
 	private:
+	protected:
 		float x, y;
 	public:
 		Point(float x, float y):
@@ -57,4 +58,5 @@ namespace SunsetEngine
 		}
 	};
 	typedef Point Dimensions;
+	typedef Point Vector;
 }

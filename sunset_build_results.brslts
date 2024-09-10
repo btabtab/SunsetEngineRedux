@@ -1,0 +1,12 @@
+SunsetCore/SunsetEngine.cpp:51:1: warning: non-void function does not return a value [-Wreturn-type]
+}
+^
+SunsetCore/SunsetEngine.cpp:55:1: warning: non-void function does not return a value [-Wreturn-type]
+}
+^
+2 warnings generated.
+/usr/bin/ld: /usr/bin/ld: DWARF error: invalid or unhandled FORM value: 0x23
+/tmp/main-a8f69f.o: in function `SunsetEngine::logMessage(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)':
+main.cpp:(.text+0x0): multiple definition of `SunsetEngine::logMessage(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)'; /usr/bin/ld: DWARF error: invalid or unhandled FORM value: 0x23
+/tmp/SunsetEngine-dd03fd.o:SunsetEngine.cpp:(.text+0x0): first defined here
+clang: error: linker command failed with exit code 1 (use -v to see invocation)

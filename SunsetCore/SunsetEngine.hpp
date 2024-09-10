@@ -10,6 +10,8 @@
 #include "Point.hpp"
 #include "FileHandling.hpp"
 
+#include "Rendering/Rendering.hpp"
+
 namespace SunsetEngine
 {
 	class SunsetEngineCore
@@ -33,7 +35,8 @@ namespace SunsetEngine
 		//Should EVERYTHING be logged.
 		bool log_everything;
 
-		std::vector<std::thread> threads;
+		//The threads being executed.
+		std::vector<std::thread*> threads_queue;
 		bool are_threads_all_caught_up;
 
 		//Starts the engine and it's sub-components.
@@ -43,6 +46,7 @@ namespace SunsetEngine
 
 		void runRenderingUpdate();
 		void renderNextFrame();
+		std::vector<std::string> script_queue;
 
 	public:
 
@@ -66,10 +70,9 @@ namespace SunsetEngine
 			Physics being a big thing for processing
 			as well.
 		*/
-		void runNewThread(std::thread thread_to_add);
+		void runNewThread(std::thread* thread_to_add);
 		void handleThreads();
 
-		std::vector<std::string> script_queue;
 		/*
 			This will queue a script for running. This
 			is so that I can throw the scripts into

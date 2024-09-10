@@ -5,15 +5,15 @@ namespace SunsetEngine
 	class Colour
 	{
 	private:
-		int r, g, b, a;
+		uint8_t r, g, b, a;
 	public:
 		Colour(int r, int g, int b, int alpha):
-		r(r), g(g), b(b), a(a)
+		r(r), g(g), b(b), a(alpha)
 		{
 		}
-		int getRed(){ return r; }
-		int getGreen(){ return g; }
-		int getBlue(){ return b; }
-		int getAlpha(){ return a; }
+		uint8_t getRed(){ return r; }
+		uint8_t getGreen(){ return g; }
+		uint8_t getBlue(){ return b; }
+		uint8_t getAlpha(){ return a; }
 	};
 }

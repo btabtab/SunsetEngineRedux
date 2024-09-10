@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RenderObject.hpp"
-#include "../Point.hpp"
 #include "Colour.hpp"
+#include "../Point.hpp"
 
 namespace SunsetEngine
 {

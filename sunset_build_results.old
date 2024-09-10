@@ -1,0 +1,49 @@
+SunsetCore/SunsetEngine.cpp:44:1: warning: non-void function does not return a value [-Wreturn-type]
+}
+^
+SunsetCore/SunsetEngine.cpp:48:1: warning: non-void function does not return a value [-Wreturn-type]
+}
+^
+In file included from SunsetCore/SunsetEngine.cpp:1:
+In file included from SunsetCore/SunsetEngine.hpp:6:
+In file included from /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/thread:43:
+/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/std_thread.h:129:2: error: static_assert failed due to requirement '__is_invocable<int>::value' "std::thread arguments must be invocable after conversion to rvalues"
+        static_assert( __is_invocable<typename decay<_Callable>::type,
+        ^              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SunsetCore/SunsetEngine.cpp:70:19: note: in instantiation of function template specialization 'std::thread::thread<int, void>' requested here
+        runNewThread(new std::thread(system(script_queue.back().c_str())));
+                         ^
+In file included from SunsetCore/SunsetEngine.cpp:1:
+In file included from SunsetCore/SunsetEngine.hpp:6:
+In file included from /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/thread:43:
+/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/std_thread.h:257:31: error: no type named 'type' in 'std::thread::_Invoker<std::tuple<int>>::__result<std::tuple<int>>'
+          typename __result<_Tuple>::type
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/std_thread.h:203:13: note: in instantiation of template class 'std::thread::_Invoker<std::tuple<int>>' requested here
+        _Callable               _M_func;
+                                ^
+/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/std_thread.h:143:33: note: in instantiation of template class 'std::thread::_State_impl<std::thread::_Invoker<std::tuple<int>>>' requested here
+        _M_start_thread(_State_ptr(new _State_impl<_Wrapper>(
+                                       ^
+SunsetCore/SunsetEngine.cpp:70:19: note: in instantiation of function template specialization 'std::thread::thread<int, void>' requested here
+        runNewThread(new std::thread(system(script_queue.back().c_str())));
+                         ^
+In file included from SunsetCore/SunsetEngine.cpp:1:
+In file included from SunsetCore/SunsetEngine.hpp:6:
+In file included from /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/thread:43:
+/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/std_thread.h:261:29: error: no type named 'type' in 'std::thread::_Invoker<std::tuple<int>>::__result<std::tuple<int>>'
+        typename __result<_Tuple>::type
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/std_thread.h:211:13: error: type 'std::thread::_Invoker<std::tuple<int>>' does not provide a call operator
+        _M_run() { _M_func(); }
+                   ^~~~~~~
+/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/std_thread.h:206:4: note: in instantiation of member function 'std::thread::_State_impl<std::thread::_Invoker<std::tuple<int>>>::_M_run' requested here
+          _State_impl(_Args&&... __args)
+          ^
+/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/bits/std_thread.h:143:33: note: in instantiation of function template specialization 'std::thread::_State_impl<std::thread::_Invoker<std::tuple<int>>>::_State_impl<int>' requested here
+        _M_start_thread(_State_ptr(new _State_impl<_Wrapper>(
+                                       ^
+SunsetCore/SunsetEngine.cpp:70:19: note: in instantiation of function template specialization 'std::thread::thread<int, void>' requested here
+        runNewThread(new std::thread(system(script_queue.back().c_str())));
+                         ^
+2 warnings and 4 errors generated.

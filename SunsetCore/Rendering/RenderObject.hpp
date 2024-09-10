@@ -5,8 +5,8 @@ namespace SunsetEngine
     class RenderObject
     {
     private:
-        RenderObject(){ /* Does nothing. */ }
     public:
-        virtual void render();
+        RenderObject(){ /* Does nothing. */ }
+        virtual void render() = 0;
     };
 };

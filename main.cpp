@@ -1,3 +1,5 @@
+#include <vector>
+
 #include "SunsetCore/SunsetEngine.hpp"
 
 int main(int argc, char const *argv[])

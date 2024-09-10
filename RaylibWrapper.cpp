@@ -1,5 +1,6 @@
-#include "Rendering/Rendering.hpp"
 #include <raylib.h>
+
+#include "SunsetCore/Rendering/Rendering.hpp"
 
 namespace RaylibWrapper
 {
@@ -34,12 +35,42 @@ namespace RaylibWrapper
 				getRaylibColour(colour)
 				);
 	}
-	void initRaylib()
-	{
-	}
 }
 
-void SunsetEngine::RenderPoint::render()
+namespace SunsetEngine
 {
-	RaylibWrapper::drawPoint(getX(), getY(), colour);
+	void initialiseRendering(int fps, std::string window_name, Dimensions dimensions)
+	{
+		InitWindow(dimensions.getX(), dimensions.getY(), window_name.c_str());
+		SetTargetFPS(fps);
+	}
+	void deinitialiseRendering()
+	{
+		endDrawing();
+		CloseWindow();
+	}
+	bool isRendererFinished()
+	{
+		return ( !WindowShouldClose() );
+	}
+	void RenderPoint::render()
+	{
+		RaylibWrapper::drawPoint(getX(), getY(), colour);
+	}
+	void RenderLine::render()
+	{
+		RaylibWrapper::drawLine(a, b, colour);
+	}
+	void clearScreen()
+	{
+		ClearBackground(BLACK);
+	}
+	void beginDrawing()
+	{
+		BeginDrawing();
+	}
+	void endDrawing()
+	{
+		EndDrawing();
+	}
 }
