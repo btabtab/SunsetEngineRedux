@@ -11,6 +11,7 @@ namespace SunsetEngine
 
 	Entity* EntityManager::addEntity(Entity* new_entity)
 	{
+		logMessage("Added entity : " + new_entity->getName());
 		entities.push_back(new_entity);
 		return entities.back();
 	}
@@ -64,8 +65,8 @@ namespace SunsetEngine
 		for(int i = 0; i != entities.size(); i++)
 		{
 			Entity* current_entity = entities.at(i);
-			current_entity->behaviour();
 			current_entity->update();
+			current_entity->behaviour();
 		}
 	}
 

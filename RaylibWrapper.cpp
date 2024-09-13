@@ -1,8 +1,11 @@
 #include <raylib.h>
 
 #include "SunsetCore/Rendering/Rendering.hpp"
+#include "SunsetCore/Rendering/Sprite.hpp"
+#include "SunsetCore/Input.hpp"
 
-namespace RaylibWrapper
+//Stuff to ease the rest of rendering.
+namespace RaylibWrapperForRendering
 {
 	Color getRaylibColour(SunsetEngine::Colour colour)
 	{
@@ -37,6 +40,7 @@ namespace RaylibWrapper
 	}
 }
 
+//Rendering...
 namespace SunsetEngine
 {
 	void initialiseRendering(int fps, std::string window_name, Dimensions dimensions)
@@ -55,11 +59,11 @@ namespace SunsetEngine
 	}
 	void RenderPoint::render()
 	{
-		RaylibWrapper::drawPoint(getX(), getY(), colour);
+		RaylibWrapperForRendering::drawPoint(getX(), getY(), colour);
 	}
 	void RenderLine::render()
 	{
-		RaylibWrapper::drawLine(a, b, colour);
+		RaylibWrapperForRendering::drawLine(a, b, colour);
 	}
 	void clearScreen()
 	{
@@ -73,4 +77,45 @@ namespace SunsetEngine
 	{
 		EndDrawing();
 	}
+
+	void* loadTexture(std::string name)
+	{
+		void* ret = new Texture;
+		(*(Texture*)ret) = LoadTexture(name.c_str());
+		return ret;
+	}
+
+	Sprite::Sprite(std::string name)
+	{
+		data = loadTexture(name);
+	}
+	Sprite::~Sprite()
+	{
+		delete ((Texture*)data);
+	}
+
+	void Sprite::render()
+	{
+		DrawTexture(*(Texture*)data, getX(), getY(), (Color){0, 0, 0, 255});
+	}
 }
+
+/*
+	The start of the input wrapper...
+*/
+
+namespace RaylibWrapperForInput
+{
+	int getKeyPressed()
+	{
+		return GetKeyPressed();
+	}
+};
+
+namespace SunsetEngine
+{
+	void updateButton(Button* button)
+	{
+		button->setPressedState(GetCharPressed() == button->getBinding());
+	}
+};

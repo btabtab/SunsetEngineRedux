@@ -10,6 +10,7 @@
 #include "Point.hpp"
 #include "FileHandling.hpp"
 #include "EntityManager.hpp"
+#include "Input.hpp"
 
 #include "Rendering/Rendering.hpp"
 
@@ -50,6 +51,8 @@ namespace SunsetEngine
 		std::vector<std::string> script_queue;
 
 		EntityManager entity_manager;
+
+		ButtonList buttons;
 
 	public:
 
@@ -92,6 +95,8 @@ namespace SunsetEngine
 		*/
 		void runNextScript();
 
-		EntityManager getEntityManager(){ return entity_manager; }
+		EntityManager* getEntityManager(){ return &entity_manager; }
+
+		ButtonList* getButtonList(){ return &buttons; }
 	};
 };

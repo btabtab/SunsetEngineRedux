@@ -2,6 +2,7 @@
 
 #include "PhysicsObject.hpp"
 #include "Rendering/RenderObject.hpp"
+#include "MessageLogs.hpp"
 
 namespace SunsetEngine
 {
@@ -13,9 +14,10 @@ namespace SunsetEngine
 	protected:
 		//The affiliated RenderObject.
 		RenderObject* render_object;
+		std::string name;
 	public:
 		Entity():
-		ID(0)
+		ID(0), name("BLANK")
 		{
 		}
 		Entity(int ID, RenderObject* render_object):
@@ -24,7 +26,16 @@ namespace SunsetEngine
 		}
 		int getID(){ return ID; }
 		virtual void behaviour() = 0;
-		void render(){ render_object->render(); }
+		void render()
+		{
+			if(render_object == nullptr)
+			{
+				logMessage("Entity has NULL RenderObject.");
+				return;
+			}
+			render_object->render();
+		}
+		std::string getName(){ return name; }
 		virtual ~Entity()
 		{
 			delete render_object;

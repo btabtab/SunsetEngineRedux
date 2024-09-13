@@ -43,9 +43,12 @@ void SunsetEngine::SunsetEngineCore::mainLoop()
 	while((is_engine_still_running || !are_threads_all_caught_up) && isRendererFinished())
 	{
 		handleThreads();
-		
+
+		entity_manager.update();
 		runRenderingUpdate();
 		clearScreen();
+		entity_manager.render();
+		RenderLine(Point(30, 30), Point(35, 35), Colour(120, 120, 155, 255)).render();
 		renderNextFrame();
 	}
 	deinitialiseEngine();

@@ -11,7 +11,8 @@ int main(int argc, char const *argv[])
 						std::string(argv[0]),
 						60
 						);
-	core.getEntityManager().addEntity(new Ball());
+	core.getButtonList()->addButton(SunsetEngine::Button("Pause", 'p'));
+	core.getEntityManager()->addEntity(new Ball());
 	core.mainLoop();
 	return 0;
 }
