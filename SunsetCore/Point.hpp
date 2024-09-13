@@ -8,6 +8,7 @@ namespace SunsetEngine
 	protected:
 		float x, y;
 	public:
+		Point(){}
 		Point(float x, float y):
 		x(x), y(y)
 		{

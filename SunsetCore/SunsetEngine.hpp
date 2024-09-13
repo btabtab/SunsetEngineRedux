@@ -9,6 +9,7 @@
 #include "Node.hpp"
 #include "Point.hpp"
 #include "FileHandling.hpp"
+#include "EntityManager.hpp"
 
 #include "Rendering/Rendering.hpp"
 
@@ -47,6 +48,8 @@ namespace SunsetEngine
 		void runRenderingUpdate();
 		void renderNextFrame();
 		std::vector<std::string> script_queue;
+
+		EntityManager entity_manager;
 
 	public:
 
@@ -88,5 +91,7 @@ namespace SunsetEngine
 			on the use of the engine for whatever project.
 		*/
 		void runNextScript();
+
+		EntityManager getEntityManager(){ return entity_manager; }
 	};
 };

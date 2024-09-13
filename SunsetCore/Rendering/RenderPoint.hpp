@@ -1,8 +1,8 @@
 #pragma once
 
 #include "RenderObject.hpp"
-#include "Colour.hpp"
 #include "../Point.hpp"
+#include "Colour.hpp"
 
 namespace SunsetEngine
 {
@@ -12,9 +12,20 @@ namespace SunsetEngine
 	private:
 		Colour colour;
 	public:
-		RenderPoint(Colour colour);
-		RenderPoint(float x, float y, Colour colour);
-		RenderPoint(Point point, Colour colour);
+		RenderPoint(Colour colour):
+		colour(colour)
+		{
+		}
+		RenderPoint(float x, float y, Colour colour):
+		colour(colour)
+		{
+			setXY(x, y);
+		}
+		RenderPoint(Point point, Colour colour):
+		colour(colour)
+		{
+			setXY(point.getX(), point.getY());
+		}
 		void render();
 	};
 };

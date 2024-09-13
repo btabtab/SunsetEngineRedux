@@ -1,19 +1,25 @@
 #pragma once
 
+typedef unsigned char byte;
+
 namespace SunsetEngine
 {
 	class Colour
 	{
 	private:
-		uint8_t r, g, b, a;
+		byte r, g, b, a;
 	public:
-		Colour(int r, int g, int b, int alpha):
+		Colour():
+		r(0), g(0), b(0), a(0)
+		{
+		}
+		Colour(byte r, byte g, byte b, byte alpha):
 		r(r), g(g), b(b), a(alpha)
 		{
 		}
-		uint8_t getRed(){ return r; }
-		uint8_t getGreen(){ return g; }
-		uint8_t getBlue(){ return b; }
-		uint8_t getAlpha(){ return a; }
+		byte getRed(){ return r; }
+		byte getGreen(){ return g; }
+		byte getBlue(){ return b; }
+		byte getAlpha(){ return a; }
 	};
 }
