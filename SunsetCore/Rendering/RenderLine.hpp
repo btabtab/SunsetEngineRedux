@@ -13,17 +13,15 @@ namespace SunsetEngine
 	private:
 		Colour colour;
 	public:
-		RenderLine(Colour colour, int new_ID):
+		RenderLine(Colour colour):
         Line(Line(0, 0, 0, 0)), colour(colour)
         {
-			ID = new_ID;
         }
-		RenderLine(Point a, Point b, Colour colour, int new_ID):
+		RenderLine(Point a, Point b, Colour colour):
         colour(colour)
         {
             this->a = a;
             this->b = b;
-			ID = new_ID;
         }
 		void render();
 	};

@@ -14,25 +14,24 @@ namespace SunsetEngine
     protected:
         float radius;
 	public:
-		RenderCircle(Colour colour, int new_ID):
+		RenderCircle(Colour colour):
 		colour(colour)
 		{
             radius = 0;
             x = y = 0;
-			ID = new_ID;
 		}
-		RenderCircle(float x, float y, float radius, Colour colour, int new_ID):
+		RenderCircle(float x, float y, float radius, Colour colour):
 		colour(colour), radius(radius)
 		{
 			setXY(x, y);
-			ID = new_ID;
 		}
-		RenderCircle(Point center, float radius, Colour colour, int new_ID):
+		RenderCircle(Point center, float radius, Colour colour):
 		colour(colour), radius(radius)
 		{
 			setXY(center.getX(), center.getY());
-			ID = new_ID;
 		}
 		void render();
+
+		~RenderCircle(){}
 	};
 };

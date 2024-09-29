@@ -14,11 +14,13 @@ namespace SunsetEngine
 			affected by gravity.
 		*/
 		bool use_gravity;
+		bool use_drag;
 		//How heavy the object is.
 		float mass;
 		//Value between 0.01 and 1.00.
 		float bounce_strength;
-
+		//Controls how much it's affected by drag.
+		float aerodynamic_decay_factor;
 		bool is_paused;
 	public:
 		PhysicsObject(){}
@@ -32,6 +34,7 @@ namespace SunsetEngine
 
 		void update();
 		void bounce();
+		void reflect();
 		void setDirection(Vector new_direction)	{ direction = new_direction; }
 		void setPosition(Point new_position)	{ position = new_position; }
 		void setMass(float new_mass)			{ mass = new_mass; }

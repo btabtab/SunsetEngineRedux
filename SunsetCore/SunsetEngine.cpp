@@ -8,6 +8,7 @@ void SunsetEngine::SunsetEngineCore::intialiseEngine()
 //Safely closes the engine down.
 void SunsetEngine::SunsetEngineCore::deinitialiseEngine()
 {
+	entity_manager.clearEntities();
 	deinitialiseRendering();
 }
 void SunsetEngine::SunsetEngineCore::runRenderingUpdate()
@@ -53,6 +54,8 @@ void SunsetEngine::SunsetEngineCore::mainLoop()
 		
 		cursor.update();
 		buttons.updateButtons();
+
+		RenderCircle(cursor.getPosition(), 5, Colour(30, 120, 140, 255)).render();
 	}
 	deinitialiseEngine();
 }

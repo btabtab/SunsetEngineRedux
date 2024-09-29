@@ -75,6 +75,7 @@ namespace SunsetEngine
 	}
 	void endDrawing()
 	{
+		DrawFPS(10, 10);
 		EndDrawing();
 	}
 
@@ -98,6 +99,11 @@ namespace SunsetEngine
 	{
 		DrawTexture(*(Texture*)data, getX(), getY(), (Color){0, 0, 0, 255});
 	}
+
+	void RenderCircle::render()
+	{
+		DrawCircle(getX(), getY(), radius, RaylibWrapperForRendering::getRaylibColour(colour));
+	}
 }
 
 /*
@@ -114,8 +120,15 @@ namespace RaylibWrapperForInput
 
 namespace SunsetEngine
 {
-	void updateButton(Button* button)
+	void Button::update()
 	{
-		button->setPressedState(GetCharPressed() == button->getBinding());
+		was_button_pressed = (GetCharPressed() == getBinding());
+	}
+	void Cursor::update()
+	{
+		left = IsMouseButtonPressed(MOUSE_BUTTON_LEFT);
+		right = IsMouseButtonPressed(MOUSE_BUTTON_RIGHT);
+
+		position.setXY(GetMousePosition().x, GetMousePosition().y);
 	}
 };
