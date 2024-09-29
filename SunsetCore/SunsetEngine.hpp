@@ -11,6 +11,7 @@
 #include "FileHandling.hpp"
 #include "EntityManager.hpp"
 #include "Input.hpp"
+#include "ThreadWizard.hpp"
 
 #include "Rendering/Rendering.hpp"
 
@@ -37,9 +38,7 @@ namespace SunsetEngine
 		//Should EVERYTHING be logged.
 		bool log_everything;
 
-		//The threads being executed.
-		std::vector<std::thread*> threads_queue;
-		bool are_threads_all_caught_up;
+		ThreadWizard thread_wizard;
 
 		//Starts the engine and it's sub-components.
 		void intialiseEngine();
@@ -55,6 +54,8 @@ namespace SunsetEngine
 		Cursor cursor;
 		ButtonList buttons;
 
+		void handEntityUpdatesToThreadWizard();
+
 	public:
 
 		SunsetEngineCore(Dimensions resolution, std::string instance_name, int fps_limit);
@@ -65,20 +66,6 @@ namespace SunsetEngine
 		int getFPS();
 		//Used to grab engine run-state.
 		bool keepEngineRunning();
-
-		/*
-			This will handle and store the different
-			threads being run for the program.
-			Hopefully making sure that the program
-			is capable of doing lots of background
-			processing which *should* make the engine
-			more performent and capable of processing
-			lots of effects and other such things.
-			Physics being a big thing for processing
-			as well.
-		*/
-		void runNewThread(std::thread* thread_to_add);
-		void handleThreads();
 
 		/*
 			This will queue a script for running. This

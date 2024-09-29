@@ -28,6 +28,10 @@ namespace SunsetEngine
 		void deleteEntityFromIndex(int target_entity_index);
 		//Empties the list of entities.
 		void clearEntities();
+		int getEntityCount();
+		
+		void updateFirstHalf();
+		void updateSecondHalf();
 
 		void update();
 		void render();
