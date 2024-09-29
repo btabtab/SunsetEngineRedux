@@ -31,8 +31,6 @@ SunsetEngine::SunsetEngineCore::SunsetEngineCore(
 	is_engine_paused = false;
 	log_everything = debug_mode = true;
 
-	are_threads_all_caught_up = false;
-
 	intialiseEngine();
 }
 void SunsetEngine::SunsetEngineCore::mainLoop()
@@ -41,11 +39,10 @@ void SunsetEngine::SunsetEngineCore::mainLoop()
 		Checks if the engine is still running
 		and if all of the threads are done.
 	*/
-	while((is_engine_still_running || !are_threads_all_caught_up) && isRendererFinished())
+	while((is_engine_still_running || !thread_wizard.getFinished()) && isRendererFinished())
 	{
-		handleThreads();
-
-		entity_manager.update();
+		handEntityUpdatesToThreadWizard();
+		thread_wizard.synchronise();
 		runRenderingUpdate();
 		clearScreen();
 		entity_manager.render();
@@ -74,32 +71,24 @@ bool SunsetEngine::SunsetEngineCore::keepEngineRunning()
 	return is_engine_still_running;
 }
 
-void SunsetEngine::SunsetEngineCore::runNewThread(std::thread* thread_to_add)
-{
-	threads_queue.push_back(thread_to_add);
-}
-void SunsetEngine::SunsetEngineCore::handleThreads()
-{
-	//Just-in-case.
-	if(threads_queue.size())
-	{
-		//Goes through and re-joins all of the loose threads.
-		for(auto &current_thread : threads_queue)
-		{
-			current_thread->join();
-			current_thread = nullptr;
-		}
-		//Clears the queue thread.
-		threads_queue.clear();
-	}
-}
 void SunsetEngine::SunsetEngineCore::queueScript(std::string script_to_run)
 {
 	script_queue.push_back(script_to_run);
 }
 void SunsetEngine::SunsetEngineCore::runNextScript()
 {
-	runNewThread(new std::thread(system, script_queue.back().c_str()));
-	std::cout << "Running: " << script_queue.back().c_str() << "\n";
-	script_queue.pop_back();
+}
+
+void SunsetEngine::SunsetEngineCore::handEntityUpdatesToThreadWizard()
+{
+	if(128 < entity_manager.getEntityCount())
+	{
+		// std::cout << "updateFirstHalf()" << "\n";
+		thread_wizard.addThread(new std::thread(&EntityManager::updateFirstHalf, entity_manager));
+		// std::cout << "updateSecondHalf()" << "\n";
+		thread_wizard.addThread(new std::thread(&EntityManager::updateSecondHalf, entity_manager));
+		return;
+	}
+	entity_manager.updateFirstHalf();
+	entity_manager.updateSecondHalf();
 }

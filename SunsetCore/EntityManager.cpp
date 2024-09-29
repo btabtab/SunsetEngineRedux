@@ -51,6 +51,11 @@ namespace SunsetEngine
 		//Wipe the vector clean.
 		entities.clear();
 	}
+	
+	int EntityManager::getEntityCount()
+	{
+		return entities.size();
+	}
 
 	/*
 		Goes through and executes the
@@ -67,6 +72,23 @@ namespace SunsetEngine
 			Entity* current_entity = entities.at(i);
 			current_entity->behaviour();
 			current_entity->update();
+		}
+	}
+
+	void EntityManager::updateFirstHalf()
+	{
+		for(int i = 0; i != getEntityCount() >> 1; i++)
+		{
+			entities.at(i)->behaviour();
+			entities.at(i)->update();
+		}
+	}
+	void EntityManager::updateSecondHalf()
+	{
+		for(int i = getEntityCount() >> 1; i != getEntityCount(); i++)
+		{
+			entities.at(i)->behaviour();
+			entities.at(i)->update();
 		}
 	}
 

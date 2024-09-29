@@ -16,9 +16,9 @@ public:
 		name = "Ball";
 		setPosition(new_position);
 		setDirection(direction);
-		setMass(0.4);
+		setMass(0.1);
 		setGravityUse(true);
-		setBounceStrength(0.5);
+		setBounceStrength(1);
 		unpause();
 
 		render_object = new SunsetEngine::RenderCircle(position, 6, SunsetEngine::Colour(230, 120, 255, 255));
