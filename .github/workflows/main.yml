@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'src/**'
+      - '/**'
       - 'examples/**'
       - '.github/workflows/webassembly.yml'
   pull_request:
