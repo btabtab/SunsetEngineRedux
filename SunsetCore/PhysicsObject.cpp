@@ -4,15 +4,19 @@ namespace SunsetEngine
 {
     void PhysicsObject::update()
     {
+        if(!is_paused)
+        {
+            return;
+        }
         if(use_gravity)
         {
-            position = position + Point(0, -mass);
+            direction = direction + Point(0, mass);
         }
         position = position + direction;
     }
 	void PhysicsObject::bounce()
     {
-        direction.setY(direction.getY() * bounce_strength);
+        direction.setY(direction.getY() * -bounce_strength);
     }
     
 	/*

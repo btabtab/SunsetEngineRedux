@@ -22,6 +22,12 @@ namespace SunsetEngine
         a(Point(a_x, a_y)), b(b_x, b_y)
         {
         }
+        Point getPointA(){ return a; }
+        Point getPointB(){ return b; }
+        
+        void setPointA(Point new_a){ a = new_a; }
+        void setPointB(Point new_b){ b = new_b; }
+
         void swapPoints()
         {
             Point swap = a;

@@ -18,11 +18,11 @@ namespace SunsetEngine
 		//Gets the "y" value.
 		float getY(){ return y; }
 		//Sets the "x" value.
-		void setX(float x){ x = x; }
+		void setX(float new_x){ x = new_x; }
 		//Sets the "y" value.
-		void setY(float y){ y = y; }
+		void setY(float new_y){ y = new_y; }
 		//Sets the "x" and "y" values.
-		void setXY(float x, float y){ setX(x); setY(y); }
+		void setXY(float new_x, float new_y){ setX(new_x); setY(new_y); }
 		//Point operators:
 		Point operator+(Point other)
 		{

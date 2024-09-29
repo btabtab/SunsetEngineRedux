@@ -1,0 +1,50 @@
+In file included from SunsetCore/SunsetEngine.cpp:1:
+In file included from SunsetCore/SunsetEngine.hpp:17:
+In file included from SunsetCore/RenderWizard.hpp:6:
+SunsetCore/RenderWindow.hpp:5:8: error: redefinition of 'RenderWindow'
+        class RenderWindow : public UIElement
+              ^
+SunsetCore/SunsetEngine.hpp:16:10: note: 'SunsetCore/RenderWindow.hpp' included multiple times, additional include site here
+#include "RenderWindow.hpp"
+         ^
+SunsetCore/RenderWizard.hpp:6:10: note: 'SunsetCore/RenderWindow.hpp' included multiple times, additional include site here
+#include "RenderWindow.hpp"
+         ^
+SunsetCore/RenderWindow.hpp:5:8: note: unguarded header; consider using #ifdef guards or #pragma once
+        class RenderWindow : public UIElement
+              ^
+1 error generated.
+RaylibWrapper.cpp:90:10: error: out-of-line definition of 'Sprite' does not match any declaration in 'SunsetEngine::Sprite'
+        Sprite::Sprite(std::string name)
+                ^~~~~~
+1 error generated.
+In file included from main.cpp:3:
+In file included from ./SunsetCore/SunsetEngine.hpp:17:
+In file included from ./SunsetCore/RenderWizard.hpp:6:
+./SunsetCore/RenderWindow.hpp:5:8: error: redefinition of 'RenderWindow'
+        class RenderWindow : public UIElement
+              ^
+./SunsetCore/SunsetEngine.hpp:16:10: note: './SunsetCore/RenderWindow.hpp' included multiple times, additional include site here
+#include "RenderWindow.hpp"
+         ^
+./SunsetCore/RenderWizard.hpp:6:10: note: './SunsetCore/RenderWindow.hpp' included multiple times, additional include site here
+#include "RenderWindow.hpp"
+         ^
+./SunsetCore/RenderWindow.hpp:5:8: note: unguarded header; consider using #ifdef guards or #pragma once
+        class RenderWindow : public UIElement
+              ^
+In file included from main.cpp:5:
+./Ball.hpp:16:23: error: no matching constructor for initialization of 'SunsetEngine::RenderLine'
+                render_object = new SunsetEngine::RenderLine(
+                                    ^
+./SunsetCore/Rendering/RenderLine.hpp:16:3: note: candidate constructor not viable: requires 2 arguments, but 3 were provided
+                RenderLine(Colour colour, int new_ID):
+                ^
+./SunsetCore/Rendering/RenderLine.hpp:21:3: note: candidate constructor not viable: requires 4 arguments, but 3 were provided
+                RenderLine(Point a, Point b, Colour colour, int new_ID):
+                ^
+./SunsetCore/Rendering/RenderLine.hpp:11:8: note: candidate constructor (the implicit copy constructor) not viable: requires 1 argument, but 3 were provided
+        class RenderLine : public Line, public RenderObject
+              ^
+./SunsetCore/Rendering/RenderLine.hpp:11:8: note: candidate constructor (the implicit move constructor) not viable: requires 1 argument, but 3 were provided
+2 errors generated.

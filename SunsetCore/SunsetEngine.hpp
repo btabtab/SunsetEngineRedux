@@ -52,6 +52,7 @@ namespace SunsetEngine
 
 		EntityManager entity_manager;
 
+		Cursor cursor;
 		ButtonList buttons;
 
 	public:

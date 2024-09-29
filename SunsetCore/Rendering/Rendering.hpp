@@ -7,6 +7,7 @@
 #include "RenderObject.hpp"
 #include "RenderPoint.hpp"
 #include "RenderLine.hpp"
+#include "RenderCircle.hpp"
 
 namespace SunsetEngine
 {

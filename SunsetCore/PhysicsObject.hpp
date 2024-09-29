@@ -4,7 +4,7 @@ namespace SunsetEngine
 {
 	class PhysicsObject
 	{
-	private:
+	protected:
 		//Where the object is.
 		Point position;
 		//Where the object will go.

@@ -21,7 +21,6 @@ namespace SunsetEngine
 		}
 		//Wrap for input library.
 		void update();
-		void setPressedState(bool press_state){ was_button_pressed = press_state; }
 		bool wasPressed(){ return was_button_pressed; }
 		char getBinding(){ return bound_character; }
 	};
@@ -31,10 +30,17 @@ namespace SunsetEngine
 	private:
 		std::vector<Button> buttons;
 	public:
-		Button getButton(int i);
+		Button getButton(int i){ return buttons.at(i); }
 		void addButton(Button new_button)
 		{
 			buttons.push_back(new_button);
+		}
+		void updateButtons()
+		{
+			for(int i = 0; i != buttons.size(); i++)
+			{
+				buttons.at(i).update();
+			}
 		}
 	};
 
@@ -48,10 +54,18 @@ namespace SunsetEngine
 		bool right;
 
 	public:
+		Cursor():
+		position(Point(0, 0)), left(false), right(false)
+		{
+		}
+		bool getLeftState(){ return left; }
+		bool getRightState(){ return right; }
 		/*
 			Updates the cursor, what
 			more could this mean?
 		*/
 		void update();
+
+		Point getPosition(){ return position; }
 	};
 };

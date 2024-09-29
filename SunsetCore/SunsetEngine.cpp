@@ -50,6 +50,9 @@ void SunsetEngine::SunsetEngineCore::mainLoop()
 		entity_manager.render();
 		RenderLine(Point(30, 30), Point(35, 35), Colour(120, 120, 155, 255)).render();
 		renderNextFrame();
+		
+		cursor.update();
+		buttons.updateButtons();
 	}
 	deinitialiseEngine();
 }
